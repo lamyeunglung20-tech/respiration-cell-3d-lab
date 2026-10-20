@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f4e9">
+  <meta name="description" content="Explore cellular respiration with a 3D cell. Identify the raw materials and products, then answer three questions.">
+  <title>Cell Lab · Respiration</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <button id="home" class="brand" type="button" aria-label="Restart the game"><span class="brand-mark" aria-hidden="true">✳</span><span id="brandName">CELL LAB</span></button>
+    <nav class="settings" aria-label="Game controls"><button id="pauseButton" class="utility" type="button" aria-pressed="false">Ⅱ Pause</button><button id="languageButton" class="utility language-button" type="button" aria-label="Switch to Chinese">🌐 English</button></nav>
+  </header>
+  <main>
+    <div class="page-heading"><h1 id="pageTitle">Respiration</h1><div class="progress"><span id="progressLabel">UNLOCKED</span><strong id="count">0 <small>/ 7</small></strong><div class="progress-line"><i id="progressFill"></i></div></div></div>
+    <div id="gameLayout" class="game-layout">
+      <div class="scene-column">
+        <section id="stage" class="stage has-choices" aria-label="Rotatable 3D cell model" data-lit="0">
+          <div id="inputRail" class="stage-rail stage-rail--left" aria-label="Raw materials"><h2 id="inputsHeading">Raw materials <span aria-hidden="true">→</span></h2><div class="slot-row"><div id="slot-glucose" class="molecule-slot"></div><div id="slot-oxygen" class="molecule-slot"></div></div></div>
+          <div class="model-viewport">
+          <canvas id="world" role="img" aria-label="A rotatable animal cell. Molecules enter from the left and leave on the right."></canvas>
+          <div id="energyLabel" class="energy-label" hidden>↑ Energy</div>
+          <div id="loading">Building the 3D cell…</div>
+          <div id="fallback" hidden><svg viewBox="0 0 680 500" role="img" aria-label="Cellular respiration model"><ellipse cx="340" cy="438" rx="240" ry="25" fill="#dadbd0"/><path class="cell-body" d="M146 262Q111 207 174 155Q237 105 289 141Q375 80 427 137Q504 109 546 184Q602 248 549 309Q535 377 447 366Q373 409 302 367Q204 386 163 334Q123 321 146 262Z" fill="#f2cdd9" stroke="#d996ae" stroke-width="8"/><ellipse class="nucleus" cx="294" cy="237" rx="66" ry="56" fill="#a997c2"/><ellipse class="mito" cx="419" cy="270" rx="82" ry="41" fill="#f1a36f" stroke="#ba735b" stroke-width="5"/><path class="mito" d="M368 270q15-44 30 0t30 0t29 0" fill="none" stroke="#ffe0a3" stroke-width="8"/></svg></div>
+          <button id="resetView" class="reset-view" type="button" aria-label="Reset model view">↺</button>
+          <div id="celebration" aria-hidden="true"></div>
+          </div>
+          <div id="outputRail" class="stage-rail stage-rail--right" aria-label="Products"><h2 id="outputsHeading">Products <span aria-hidden="true">↗</span></h2><div class="slot-row"><div id="slot-carbon" class="molecule-slot"></div><div id="slot-water" class="molecule-slot"></div></div></div>
+        </section>
+        <p id="materialFeedback" class="material-feedback" role="status" aria-live="polite">Choose the four substances to reveal the equation.</p>
+        <div class="scene-tools"><button id="replayScene" class="replay" type="button">↻ Start again</button><span id="gesture">Drag to rotate · Pinch to zoom</span></div>
+        <section id="equationBoard" class="equation-board" aria-label="Cellular respiration equation"><span id="equationTitle" class="equation-title">Respiration equation</span><div id="equationTerms" class="equation-terms" role="status" aria-live="polite"></div><p id="energyRelease" class="energy-release" hidden>✳ Energy is released for cells to use.</p></section>
+      </div>
+      <section id="panel" class="panel" aria-live="polite" hidden></section>
+    </div>
+    <p id="modelNote" class="model-note">Simplified animal cell model · Molecules and sizes are illustrative.</p>
+  </main>
+  <div id="announce" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>
